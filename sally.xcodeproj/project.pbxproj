@@ -48,16 +48,6 @@
 			path = sally;
 			sourceTree = "<group>";
 		};
-		78896DF32E6F42AA0062808D /* sallyTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = sallyTests;
-			sourceTree = "<group>";
-		};
-		78896DFD2E6F42AA0062808D /* sallyUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = sallyUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				78896DD92E6F42A80062808D /* sally */,
-				78896DF32E6F42AA0062808D /* sallyTests */,
-				78896DFD2E6F42AA0062808D /* sallyUITests */,
 				78896DD82E6F42A80062808D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,9 +131,6 @@
 			dependencies = (
 				78896DF22E6F42AA0062808D /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				78896DF32E6F42AA0062808D /* sallyTests */,
-			);
 			name = sallyTests;
 			packageProductDependencies = (
 			);
@@ -165,9 +150,6 @@
 			);
 			dependencies = (
 				78896DFC2E6F42AA0062808D /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				78896DFD2E6F42AA0062808D /* sallyUITests */,
 			);
 			name = sallyUITests;
 			packageProductDependencies = (
