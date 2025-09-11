@@ -4,7 +4,11 @@ import UIKit
 //TEMP:
 let imagePath = "https://hips.hearstapps.com/hmg-prod/images/long-boat-docked-on-beach-in-krabi-thailand-summers-royalty-free-image-1622044679.jpg?crop=0.668xw:1.00xh;0.0657xw,0&resize=1120:*"
 
-final class MainScreenController : UIViewController {
+private enum CellIndetifier: String {
+    case favoriteCell
+}
+
+final class FavoritesScreenController : UIViewController {
     private var dataSource: UICollectionViewDataSource = FavoritesUIDataSourse()
     
     init () {
@@ -18,12 +22,15 @@ final class MainScreenController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavVar()
+        view.backgroundColor = .neutralPrimaryS2
         
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 12
         layout.itemSize = CGSize(width: view.bounds.width - 24, height: view.bounds.width * 1.2)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .neutralPrimaryS2
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
@@ -38,9 +45,20 @@ final class MainScreenController : UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
+    
+    private func setupNavVar() {
+        guard let navigationController = navigationController else {return}
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.isTranslucent = true
+        navigationController.navigationBar.sizeToFit()
+        navigationController.navigationBar.barTintColor = .neutralPrimaryS2
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController.navigationBar.largeTitleTextAttributes = [.font: UIFont.systemFont(ofSize: 25, weight: .semibold)]
+        self.title = "Избранное"
+    }
 }
 
-extension MainScreenController: UICollectionViewDelegate {}
+extension FavoritesScreenController: UICollectionViewDelegate {}
 
 final class FavoritesUIDataSourse: NSObject, UICollectionViewDataSource {
     private let favoritesData: [Favorite] = Array(repeating: Favorite(
@@ -89,7 +107,7 @@ private final class FavoriteCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .gray
+        contentView.backgroundColor = .neutralPrimaryS1
         contentView.layer.cornerRadius = 24
         addCellContent()
     }
@@ -135,10 +153,6 @@ private struct Favorite {
     let description: String
     let companyName: String
     let discoutPercent: UInt8
-}
-
-private enum CellIndetifier: String {
-    case favoriteCell = "FavoriteCell"
 }
 
 private final class CompanyBannerView: UIView {
