@@ -1,5 +1,6 @@
 import UIKit
 
+//TODO: ошибка констрейнтов хз поемуц надо разобраться
 final class AppCustomTabController: UITabBarController, UITabBarControllerDelegate {
     private let customTabBar = CustomTabVarView()
     
@@ -15,7 +16,6 @@ final class AppCustomTabController: UITabBarController, UITabBarControllerDelega
         NSLayoutConstraint.activate([
             customTabBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             customTabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            customTabBar.heightAnchor.constraint(equalToConstant: 72)
         ])
         
         customTabBar.onValueChanged = { [weak self] index in
@@ -49,7 +49,7 @@ private class CustomTabVarView: UIView{
     }
     
     required init?(coder: NSCoder) {
-        fatalError( "init(frame:) has not been implemented" )
+        fatalError("init(frame:) has not been implemented" )
     }
     
     private func setupUI() {
@@ -60,7 +60,6 @@ private class CustomTabVarView: UIView{
         layer.borderColor = UIColor.neutralSecondaryS3.cgColor
         
         indicatorView.backgroundColor = .statusOkS1
-        indicatorView.translatesAutoresizingMaskIntoConstraints = false
         indicatorView.layer.cornerRadius = 28
         addSubview(indicatorView)
         
@@ -71,10 +70,10 @@ private class CustomTabVarView: UIView{
         addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
         
         let titles = ["house.fill", "heart.fill"]

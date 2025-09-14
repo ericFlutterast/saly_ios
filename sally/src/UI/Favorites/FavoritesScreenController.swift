@@ -33,10 +33,9 @@ final class FavoritesScreenController : UIViewController {
         collectionView.backgroundColor = .neutralPrimaryS2
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(collectionView)
-        
         collectionView.dataSource = dataSource
         collectionView.register(FavoriteCell.self, forCellWithReuseIdentifier: CellIndetifier.favoriteCell.rawValue)
+        view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -52,8 +51,11 @@ final class FavoritesScreenController : UIViewController {
         navigationController.navigationBar.isTranslucent = true
         navigationController.navigationBar.sizeToFit()
         navigationController.navigationBar.barTintColor = .neutralPrimaryS2
-        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
-        navigationController.navigationBar.largeTitleTextAttributes = [.font: UIFont.systemFont(ofSize: 25, weight: .semibold)]
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.neutralSecondaryS1]
+        navigationController.navigationBar.largeTitleTextAttributes = [
+            .font: UIFont.systemFont(ofSize: 25, weight: .semibold),
+            .foregroundColor: UIColor.neutralSecondaryS1,
+        ]
         self.title = "Избранное"
     }
 }
@@ -146,13 +148,6 @@ private final class FavoriteCell: UICollectionViewCell {
         companyBanner.companyName = companyName
         companyBanner.imageURL = imageURL
     }
-}
-
-private struct Favorite {
-    let id: String
-    let description: String
-    let companyName: String
-    let discoutPercent: UInt8
 }
 
 private final class CompanyBannerView: UIView {
