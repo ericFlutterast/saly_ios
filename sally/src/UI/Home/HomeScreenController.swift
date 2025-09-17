@@ -126,6 +126,11 @@ extension HomeScreenController: UICollectionViewDelegate {
         let alpha = max(0, newHeight / maxHeaderHeight)
         personalHeader.alpha = alpha
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = DetailDiscountScreenControllerViewController()
+        present(controller, animated: true)
+    }
 }
 
 //MARK: Discount cell
